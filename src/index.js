@@ -8,6 +8,8 @@ function getPokemons() {
 }
 
 function render(content) {
+  const head = document.querySelector("head");
+
   content.forEach(({ name }, index) => {
     const number = index + 1;
     const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${number}.png`;
@@ -21,9 +23,18 @@ function render(content) {
     pokemonCard
       .querySelector(".pokemon-card__image")
       .setAttribute("data-src", img);
+
     pokemonCard.querySelector(
       ".pokemon-card__link"
     ).href = `/pokemon?id=${number}`;
+
+    if (index < 50) {
+      const link = document.createElement("link");
+      link.rel = "prefetch";
+      link.as = "image";
+      link.href = img;
+      head.appendChild(link);
+    }
 
     makeLazy(pokemonCard.querySelector(".pokemon-card__image"));
     fragment.appendChild(pokemonCard);
