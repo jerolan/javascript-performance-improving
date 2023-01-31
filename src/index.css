@@ -1,0 +1,18 @@
+a {
+  appearance: none;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.cursor-pointer {
+  text-transform: capitalize;
+}
