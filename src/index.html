@@ -5,21 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="dns-prefetch" href="https://pokeapi.co" />
     <link rel="prefetch" href="/pokemon" as="document" />
-    <link
-      rel="preload"
-      as="image"
-      href="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
-    />
+    <script>
+      const head = document.querySelector("head");
+      for (let i = 0; i < 3; i++) {
+        const link = document.createElement("link");
+        const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+          i + 1
+        }.png`;
+        link.rel = "preload";
+        link.as = "image";
+        link.href = img;
+        head.appendChild(link);
+      }
+    </script>
     <link rel="stylesheet" href="./index.css" />
     <link
       rel="stylesheet"
@@ -45,7 +43,7 @@
         </template>
       </div>
     </main>
-    <script src="./lazy.js" defer></script>
-    <script src="./index.js" defer></script>
+    <script src="./lazy.js" async></script>
+    <script src="./index.js" async></script>
   </body>
 </html>

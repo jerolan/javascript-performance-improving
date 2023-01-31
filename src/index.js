@@ -28,7 +28,7 @@ function render(content) {
       ".pokemon-card__link"
     ).href = `/pokemon?id=${number}`;
 
-    if (index < 50) {
+    if (index >= 3 && index < 15) {
       const link = document.createElement("link");
       link.rel = "prefetch";
       link.as = "image";
