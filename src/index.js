@@ -10,19 +10,25 @@ function getPokemons() {
 function render(content) {
   content.forEach(({ name }, index) => {
     const number = index + 1;
-    const url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${number}.png`;
+    const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${number}.png`;
     const pokemonCard = pokemonCardTemplate.content.cloneNode(true);
+
     pokemonCard.querySelector(".pokemon-card__name").textContent = name;
     pokemonCard.querySelector(
       ".pokemon-card__number"
     ).textContent = `#${number}`;
     pokemonCard.querySelector(".pokemon-card__image").alt = name;
-    pokemonCard.querySelector(".pokemon-card__image").src = url;
+    pokemonCard
+      .querySelector(".pokemon-card__image")
+      .setAttribute("data-src", img);
     pokemonCard.querySelector(
       ".pokemon-card__link"
     ).href = `/pokemon?id=${number}`;
+
+    makeLazy(pokemonCard.querySelector(".pokemon-card__image"));
     fragment.appendChild(pokemonCard);
   });
+
   pokemonCardTemplate.parentNode.appendChild(fragment);
 }
 

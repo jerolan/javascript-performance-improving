@@ -16,7 +16,11 @@
         <template id="pokemon-card">
           <a class="pokemon-card__link" href="#">
             <article class="container center">
-              <img class="pokemon-card__image" />
+              <img
+                height="96px"
+                width="96px"
+                class="lazy pokemon-card__image"
+              />
               <i class="pokemon-card__number">Pokemon Number</i>
               <h3 class="pokemon-card__name capitalize">Pokemon Name</h3>
             </article>
@@ -24,6 +28,7 @@
         </template>
       </div>
     </main>
+    <script src="./lazy.js" defer></script>
     <script src="./index.js" defer></script>
   </body>
 </html>
