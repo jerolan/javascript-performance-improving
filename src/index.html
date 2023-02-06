@@ -9,9 +9,7 @@
       const head = document.querySelector("head");
       for (let i = 0; i < 3; i++) {
         const link = document.createElement("link");
-        const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-          i + 1
-        }.png`;
+        const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i + 1}.png`;
         link.rel = "preload";
         link.as = "image";
         link.href = img;
@@ -19,10 +17,7 @@
       }
     </script>
     <link rel="stylesheet" href="./index.css" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/@picocss/pico@1.5.7/css/pico.min.css"
-    />
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.7/css/pico.min.css" />
   </head>
 
   <body>
@@ -31,11 +26,7 @@
         <template id="pokemon-card">
           <a class="pokemon-card__link" href="#">
             <article class="container center">
-              <img
-                height="96px"
-                width="96px"
-                class="lazy pokemon-card__image"
-              />
+              <img loading="lazy" height="96px" width="96px" class="lazy pokemon-card__image" />
               <i class="pokemon-card__number">Pokemon Number</i>
               <h3 class="pokemon-card__name capitalize">Pokemon Name</h3>
             </article>
@@ -43,7 +34,17 @@
         </template>
       </div>
     </main>
+    <script>
+      function localRender() {
+        getPokemons().then((content) => render(content, true));
+      }
+    </script>
+    <script src="./slowWorkerized.js" async></script>
     <script src="./lazy.js" async></script>
-    <script src="./index.js" async></script>
+    <script src="./index.js" async onload="localRender()"></script>
+    <script>
+      const worker = new Worker("./slowWorkerized.js");
+      worker.postMessage(43);
+    </script>
   </body>
 </html>
