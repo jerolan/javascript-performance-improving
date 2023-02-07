@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.7/css/pico.min.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <div class="grid">
+        <template id="pokemon-card">
+          <article class="container center">
+            <img class="pokemon-card__image" />
+            <i class="pokemon-card__number">Pokemon Number</i>
+            <h3 class="pokemon-card__name capitalize">Pokemon Name</h3>
+            <p class="pokemon-card__type">Pokemon Type</p>
+            <table role="grid">
+              <tbody>
+                <tr>
+                  <th scope="row">HT</th>
+                  <td>WT</td>
+                </tr>
+                <tr>
+                  <th class="pokemon-card__height" scope="row">HT</th>
+                  <td class="pokemon-card__weight">WT</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+        </template>
+      </div>
+    </main>
+    <script src="./pokemon.js" async></script>
+  </body>
+</html>
